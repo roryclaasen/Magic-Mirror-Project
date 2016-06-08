@@ -35,6 +35,5 @@ $(document).ready(function() {
 		doDate(today);
 		var t = setTimeout(startTime, 500);
 	}
-
 	startTime();
 });

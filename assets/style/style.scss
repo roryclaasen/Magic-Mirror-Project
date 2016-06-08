@@ -24,17 +24,37 @@ html, body{
 		&.calendar {
 			left: 2em;
 			top: 1.5em;
+			#authorize-div {
+				position: relative;
+				top: 30px;
+				* {
+					display: block;
+				}
+				button {
+					position: relative;
+					top: 10px;
+					font-family: 'Ubuntu';
+					font-weight: bold;
+					font-size: 1.2em;
+					background-color: #fff;
+					color: #000;
+					border: none;
+					text-decoration: none;
+					padding: 5px 10px;
+				}
+			}
 			#events {
 				width: 100%;
 				//white-space: pre-line;
 				#title {
 					font-size: 4em;
-					padding-bottom: 5px;
+					padding-bottom: 10px;
 				}
 				.event {
 					display: block;
 					font-weight: 100;
 					width: 100%;
+					padding-bottom: 5px;
 					.summary {
 						font-size: 1.5em;
 						text-align: left;

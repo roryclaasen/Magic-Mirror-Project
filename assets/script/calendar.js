@@ -26,7 +26,10 @@ function handleAuthClick(event) {
 }
 
 function loadCalendarApi() {
+	$("#events").html('<span id="title">Loading Calendar</span>');
 	gapi.client.load('calendar', 'v3', listUpcomingEvents);
+
+	var t = setTimeout(loadCalendarApi, 30 * 60 * 1000); // (30)minutes*seconds*milliseconds // every 30 mins
 }
 
 function listUpcomingEvents() {
@@ -67,8 +70,11 @@ function addEvent(calendarEvent, date) {
 	if (!(secondDate instanceof Date) || secondDate == "Invalid Date"){
 		var parts = date.date.split("-");
 		secondDate = new Date(parts[0], parts[1] - 1, parts[2]);
-		console.log(date.date + ", " + secondDate);
 	}
-	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
-	$('#events').append('<span class="event"><span class="summary">' + content + '</span><span class="days">' + diffDays + ' days to go</span></span>');
+	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+	var contentDays = diffDays + " days to go"
+	if (diffDays == 0) contentDays = "today";
+	if (diffDays == 1) contentDays = diffDays + " day to go";
+
+	$('#events').append('<span class="event"><span class="summary">' + content + '</span><span class="days">' + contentDays + '</span></span>');
 }
