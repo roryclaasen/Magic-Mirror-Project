@@ -22,11 +22,29 @@ html, body{
 	.module {
 		position: fixed;
 		&.calendar {
+			left: 2em;
+			top: 1.5em;
 			#events {
-				.title {
-					font-size: 3em;
+				width: 100%;
+				//white-space: pre-line;
+				#title {
+					font-size: 4em;
+					padding-bottom: 5px;
 				}
-				white-space: pre-line;
+				.event {
+					display: block;
+					font-weight: 100;
+					width: 100%;
+					.summary {
+						font-size: 1.5em;
+						text-align: left;
+					}
+					.days {
+						font-size: 1.25em;
+						text-align: right;
+						float:right;
+					}
+				}
 			}
 		}
 		&.dateTime {

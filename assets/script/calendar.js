@@ -1,5 +1,4 @@
 var CLIENT_ID = '227617601741-e4ed1r83v5cpheaakcn411gk1h5t0gam.apps.googleusercontent.com';
-
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
 function checkAuth() {
@@ -30,11 +29,6 @@ function loadCalendarApi() {
 	gapi.client.load('calendar', 'v3', listUpcomingEvents);
 }
 
-/**
-* Print the summary and start datetime/date of the next ten events in
-* the authorized user's calendar. If no events are found an
-* appropriate message is printed.
-*/
 function listUpcomingEvents() {
 	var request = gapi.client.calendar.events.list({
 		'calendarId': 'primary',
@@ -47,29 +41,34 @@ function listUpcomingEvents() {
 
 	request.execute(function(resp) {
 		var events = resp.items;
-		setTitle('Upcoming events');
+		$('#title').html('Upcoming events');
 
 		if (events.length > 0) {
 			for (i = 0; i < events.length; i++) {
 				var event = events[i];
 				var when = event.start.dateTime;
 				if (!when) {
-					when = event.start.date;
+					when = event.start;
 				}
-				appendPre(event.summary + ' (' + when + ')')
+				addEvent(event, when)
 			}
 		} else {
-			setTitle('No upcoming events found');
+			$('#title').html('No upcoming events found');
 		}
-
 	});
 }
-function setTitle(message) {
-	document.getElementById('events').innerHTML = '<span class="title">' + message + '</span><br>';
-}
 
-function appendPre(message) {
-	var events = document.getElementById('events');
-	var textContent = document.createTextNode(message + '\n');
-	events.appendChild(textContent);
+function addEvent(calendarEvent, date) {
+	var content = calendarEvent.summary;
+
+	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+	var firstDate = new Date();
+	var secondDate = new Date(date);
+	if (!(secondDate instanceof Date) || secondDate == "Invalid Date"){
+		var parts = date.date.split("-");
+		secondDate = new Date(parts[0], parts[1] - 1, parts[2]);
+		console.log(date.date + ", " + secondDate);
+	}
+	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime())/(oneDay)));
+	$('#events').append('<span class="event"><span class="summary">' + content + '</span><span class="days">' + diffDays + ' days to go</span></span>');
 }
