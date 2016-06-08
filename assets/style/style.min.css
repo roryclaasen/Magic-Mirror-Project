@@ -1,0 +1,1 @@
+@import url(../fonts/Ubuntu.css);html,body{background-color:#000;color:#fff}div.content{font-family:'Ubuntu';font-weight:bold}div.content .dateTime{float:right;font-size:5em;position:fixed;right:0;top:0}div.content .dateTime span{display:block;text-align:right;padding-right:0.3em;text-transform:uppercase}div.content .dateTime span#time{font-weight:100}
