@@ -6,9 +6,15 @@
 	<meta http-equiv="Content-Language" content="en">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<link rel="stylesheet" href="assets/style/style.min.css">
-	<script src="assets/script/time.js"></script>
 	<title>Magic Mirror</title>
+
+	<link rel="stylesheet" href="assets/style/style.min.css">
+
+	<script src="assets/script/time.js"></script>
+
+	<script src="assets/script/calendar.js"></script>
+	<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+
 	<script>
 	function initOnLoad() {
 		startTime();
@@ -17,7 +23,17 @@
 </head>
 <body onLoad="initOnLoad()">
 	<div class="content">
-		<div class="dateTime">
+		<div class="module calendar">
+			<div id="authorize-div" style="display: none">
+				<span>Authorize access to Google Calendar API</span>
+				<!--Button for the user to click to initiate auth sequence -->
+				<button id="authorize-button" onclick="handleAuthClick(event)">
+					Authorize
+				</button>
+			</div>
+			<div id="events"></div>
+		</div>
+		<div class="module dateTime">
 			<span id="year"></span>
 			<span id="weekday"></span>
 			<span id="day"></span>
