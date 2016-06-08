@@ -6,14 +6,14 @@
 }
 @font-face {
 	font-family: 'Ubuntu';
-	font-style: italic;;
+	font-style: italic;
 	font-weight: bold;
 	src: url('Ubuntu/Ubuntu-BoldItalic.ttf');
 }
 @font-face {
 	font-family: 'Ubuntu';
 	font-style: italic;
-	font-weight: normal;;
+	font-weight: normal;
 	src: url('Ubuntu/Ubuntu-Italic.ttf');
 }
 @font-face {
@@ -31,7 +31,7 @@
 @font-face {
 	font-family: 'Ubuntu';
 	font-style: normal;
-	font-weight: 600;;
+	font-weight: 600;
 	src: url('Ubuntu/Ubuntu-Medium.ttf');
 }
 @font-face {
@@ -43,6 +43,6 @@
 @font-face {
 	font-family: 'Ubuntu';
 	font-style: normal;
-	font-weight: normal;;
+	font-weight: normal;
 	src: url('Ubuntu/Ubuntu-Regular.ttf');
 }
