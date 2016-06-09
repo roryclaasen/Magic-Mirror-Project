@@ -62,7 +62,8 @@ html, body {
 					height: 100%;
 					width: 100%;
 					content: "";
-					background: linear-gradient(to top, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0) 40%);
+					background: linear-gradient(to top, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 50%);
+					// Using 9 results now instead of 10 as the 10th gets hidden
 				}
 			}
 		}

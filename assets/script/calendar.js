@@ -38,7 +38,7 @@ function listUpcomingEvents() {
 		'timeMin': (new Date()).toISOString(),
 		'showDeleted': false,
 		'singleEvents': true,
-		'maxResults': 10,
+		'maxResults': 9,
 		'orderBy': 'startTime'
 	});
 
