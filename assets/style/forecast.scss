@@ -30,4 +30,28 @@ html, body {
          display: none;
       }
    }
+   .fe_daily {
+      .fe_day {
+         .fe_label {
+            font-weight: bold;
+         }
+         .fe_temp_bar {
+            width: 15px;
+            border-radius: 1px;
+         }
+         .fe_high_temp, .fe_low_temp{
+            left: -1.5px;
+            width: 100%;
+            font-size: 1.3em;
+            font-weight: bold;
+            text-align: center;
+         }
+         .fe_high_temp {
+            top: -20px;
+         }
+         .fe_low_temp{
+            bottom: -20px;
+         }
+      }
+   }
 }
