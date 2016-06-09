@@ -82,5 +82,14 @@ html, body{
 				}
 			}
 		}
+		&.forecast {
+			width: 500px;
+			height: 500px; //245px;
+			bottom: 1em;
+			left: 1em;
+			#forecast_embed {
+				border: none;
+			}
+		}
 	}
 }

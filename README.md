@@ -22,3 +22,19 @@ The frame has still yet to be decided... Well I can't decide right but it will p
 - Mouse and keyboard
 
 	These will be plugged in when I need to. They are not essential when the mirror is working
+
+# Modules
+## Time And Date
+## Calendar
+I am using the google calendar APIs, on the first time viewing the page there is a prompt to authorise this app to access google.
+## Weather
+After a long time looking at APIs I ended up taking the short route and using [forecast.io](http://forecast.io/).
+This means that I can not change most of the styles and so I'm using [Stylish](https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=en) to add my styles to it.
+The style Magic Mirror Weather needs to look like this
+```css
+@import url(http://localhost:8000/assets/style/forecast.min.css);
+```
+Applies to
+```
+URLs starting with: http://forecast.io/embed/
+```

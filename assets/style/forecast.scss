@@ -1,0 +1,33 @@
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300,400italic,500,500italic,700,700italic,300italic);
+html, body {
+   width: 100%;
+   height: 100%;
+}
+* {
+   font-family: 'Ubuntu', sans-serif;
+   -webkit-touch-callout: none; /* iOS Safari */
+   -webkit-user-select: none;   /* Chrome/Safari/Opera */
+   -khtml-user-select: none;    /* Konqueror */
+   -moz-user-select: none;      /* Firefox */
+   -ms-user-select: none;       /* Internet Explorer/Edge */
+   user-select: none;
+   cursor: default;
+}
+.fe_container {
+   width: 100%;
+   height: auto;
+   position: fixed;
+   bottom: 2.2em;
+   .fe_title {
+      border: none !important;
+      .fe_location {
+         font-size: 3em !important;
+         .pre {
+            display: none;
+         }
+      }
+      .fe_forecast_link {
+         display: none;
+      }
+   }
+}
