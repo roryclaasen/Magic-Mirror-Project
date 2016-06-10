@@ -43,7 +43,7 @@ html, body {
 		position: fixed;
 		&.calendar {
 			left: 2em;
-			top: 1.5em;
+			top: 58%;
 			width: auto;
 			height: auto;
 			#authorize-div {
@@ -70,8 +70,9 @@ html, body {
 				//white-space: pre-line;
 				position: relative;
 				#title {
-					font-size: 4em;
+					font-size: 3.25em;
 					padding-bottom: 10px;
+					text-transform: uppercase;
 				}
 				.event {
 					display: block;
@@ -81,6 +82,7 @@ html, body {
 					.summary {
 						font-size: 1.5em;
 						text-align: left;
+						padding-right: 20px;
 					}
 					.days {
 						font-size: 1.25em;
@@ -101,22 +103,26 @@ html, body {
 		}
 		&.dateTime {
 			float: right;
-			font-size: 5em;
+			font-size: 7em;
 			right: 0;
 			top: 0;
 			span {
 				display: block;
+				padding-right: 10px;
 				text-align: right;
-				padding-right: 0.3em;
 				text-transform: uppercase;
-				&#time{
+				line-height: 1.0;
+				&#day, &#weekday{
+					color: rgba(255, 255, 255, 0.6575);
+				}
+				&#time {
 					font-weight: 100;
 				}
 			}
 		}
 		&.forecast {
 			z-index: 5;
-			bottom: 1em;
+			top: -1em;
 			left: 1em;
 			#weather {
 				width: 500px;
