@@ -1,8 +1,40 @@
-@import "main";
+@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300,400italic,500,500italic,700,700italic,300italic);
+@import '../fonts/weather';
+
+@-webkit-viewport {
+	width: device-width;
+}
+@-moz-viewport {
+	width: device-width;
+}
+@-ms-viewport {
+	width: device-width;
+}
+@-o-viewport {
+	width: device-width;
+}
+@viewport {
+	width: device-width;
+}
+
 html, body {
+	background-color: #000;
+	color: #fff;
+	margin: 0;
+	padding: 0;
 	width: 100vw;
 	height: 100vh;
+	&, *{
+		-webkit-touch-callout: none; /* iOS Safari */
+		-webkit-user-select: none;   /* Chrome/Safari/Opera */
+		-khtml-user-select: none;    /* Konqueror */
+		-moz-user-select: none;      /* Firefox */
+		-ms-user-select: none;       /* Internet Explorer/Edge */
+		user-select: none;
+		cursor: default;
+	}
 }
+
 .content {
 	font-family: 'Ubuntu';
 	font-weight: bold;
@@ -84,12 +116,71 @@ html, body {
 		}
 		&.forecast {
 			z-index: 5;
-			width: 500px;
-			height: 500px; //245px;
 			bottom: 1em;
 			left: 1em;
-			iframe, #forecast_embed {
-				border: none;
+			#weather {
+				width: 500px;
+				margin: 0px auto;
+				text-align: center;
+				text-transform: uppercase;
+				i {
+					font-size: 150px;
+					line-height: 1.0;
+				}
+				h2 {
+					margin: 0 0 8px;
+					color: #fff;
+					font-size: 100px;
+					font-weight: bold;
+					text-align: center;
+					text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+				}
+				ul {
+					margin: 0;
+					padding: 0;
+					li {
+						display: inline-block;
+						&.currently {
+							margin: 0 20px;
+						}
+					}
+				}
+				.forecast {
+					padding-top: 10px;
+					text-align: center;
+					width: 100%;
+					margin: auto;
+					div {
+						display: inline-block;
+						width: 40px;
+						margin: 0 10px;
+						p {
+							position: relative;
+							width: 100%;
+							* {
+								display: block;
+								position: relative;
+								text-align: center;
+							}
+							span {
+								font-weight: 200;
+								&.day {
+									vertical-align: top;
+								}
+								&.temp {
+									vertical-align: bottom;
+									font-size: 0.95em;
+								}
+							}
+							i {
+								vertical-align: middle;
+								text-align: center;
+								top: -0.25em;
+								font-size: 3em;
+							}
+						}
+					}
+				}
 			}
 		}
 	}

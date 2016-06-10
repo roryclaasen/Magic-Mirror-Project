@@ -17,6 +17,7 @@
 	<script src="assets/script/calendar.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 
+	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
 	<script src="assets/script/forecast.js"></script>
 </head>
 <body>
@@ -40,7 +41,8 @@
 			<span id="time"></span>
 		</div>
 		<div class="module forecast">
-			<iframe id="forecast_embed" type="text/html" frameborder="0" height="100%" width="100%"> </iframe>
+			<div id="weather"></div>
+			<!-- <iframe id="forecast_embed" type="text/html" frameborder="0" height="100%" width="100%"> </iframe> -->
 		</div>
 	</div>
 </body>
