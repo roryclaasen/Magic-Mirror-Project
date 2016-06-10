@@ -25,18 +25,14 @@ The frame has still yet to be decided... Well I can't decide right but it will p
 
 # Modules
 ### Time And Date
+Time and date is acquired by the java script reference `Date`. The module gest updated every half second to be slightly more actuate in the display.
+<br>The code can be found in [time.js](assets/script/time.js).
 
 ## Calendar
 I am using the google calendar APIs, on the first time viewing the page there is a prompt to authorise this app to access google.
+<br>The code can be found in [calendar.js](assets/script/calendar.js).
 
 ### Weather
-After a long time looking at APIs I ended up taking the short route and using [forecast.io](http://forecast.io/).
-This means that I can not change most of the styles and so I'm using [Stylish](https://chrome.google.com/webstore/detail/stylish/fjnbnpbmkenffdnngjfgmeleoegfcffe?hl=en) to add my styles to it.
-<br>The style Magic Mirror Weather needs to look like this:
-```css
-@import url(http://localhost:8000/assets/style/forecast.min.css);
-```
-Applies to
-```
-URLs starting with: http://forecast.io/embed/
-```
+After experimenting with different weather APIs I have ended up using [jquery.simpleWeather](http://simpleweatherjs.com).
+Simple Weather is "a simple jQuery plugin to display current weather data for any location and doesn't get in your way". I'm using it as it is very easy to use and it makes more sense than some of the others I tried, it also has some great examples to get stated with.
+<br>The code can be found in [forecast.js](assets/script/forecast.js).
