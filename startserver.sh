@@ -1,12 +1,11 @@
 #!/bin/bash
-set +v
-function run {
+run () {
+	clear
 	python -m http.server 8000
-	sleep
 	echo "Do you want to restart?"
 	select yn in "Yes" "No"; do
 		case $yn in
-			Yes ) make run; break;;
+			Yes ) run; break;;
 			No ) exit;;
 		esac
 	done
