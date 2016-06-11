@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta http-equiv="Content-Language" content="en">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,19 +9,24 @@
 	<title>Magic Mirror</title>
 
 	<link rel="stylesheet" href="assets/style/style.min.css">
-
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+	<script src="assets/lib/jquery/jquery-3.0.0.min.js"></script>
+	<script src="assets/lib/checknet/jquery.checknet-1.6.min.js"></script>
+	<script src="assets/script/main.js"></script>
 
 	<script src="assets/script/time.js"></script>
 
 	<script src="assets/script/calendar.js"></script>
 	<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
 
-	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+	<script src="assets/lib/simpleWeather/jquery.simpleWeather.min.js"></script>
 	<script src="assets/script/forecast.js"></script>
 </head>
 <body>
 	<div class="content">
+		<div class="module connection" id="netWarn">
+			<i class="icon-warning"></i>
+			<h3>No Connection</h3>
+		</div>
 		<div class="module calendar">
 			<div id="events">
 				<span id="title">Loading Calendar</span>
@@ -39,6 +44,7 @@
 			<span id="day"></span>
 			<span id="month"></span>
 			<span id="time"></span>
+			<span id="time-clock"></span>
 		</div>
 		<div class="module forecast">
 			<div id="weather"></div>

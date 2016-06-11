@@ -12,14 +12,26 @@ function checkTime(i) {
 	return i;
 }
 
+function getTimeReady(i) {
+	var time = "" + checkTime(i) + "";
+	return [time.substr(0, 1), time.substr(1, 2)];
+}
+
 $(document).ready(function() {
 	function doTime(today) {
 		var h = today.getHours();
-		var m = today.getMinutes();
-		var s = today.getSeconds();
-		m = checkTime(m);
-		s = checkTime(s);
-		$(time).html(h + ":" + m + ":" + s);
+		$(time + "-clock").html("am");
+		if (h > 12 ){
+			$(time + "-clock").html("pm");
+			// h -= 12;
+		}
+		h = getTimeReady(h);
+		var m = getTimeReady(today.getMinutes());
+		var s = getTimeReady(today.getSeconds());
+		var hour = '<span class="hour">' + h[0] + '</span><span class="hour">' + h[1] + '</span>';
+		var minute = '<span class="minute">' + m[0] + '</span><span class="minute">' + m[1] + '</span>';
+		var second = '<span class="second">' + s[0] + '</span><span class="second">' + s[1] + '</span>';
+		$(time).html(hour + '<span class="colon"></span>' + minute + '<span class="colon"></span>' + second);
 	}
 
 	function doDate(today) {
@@ -31,8 +43,8 @@ $(document).ready(function() {
 
 	function startTime() {
 		var today = new Date();
-		doTime(today);
 		doDate(today);
+		doTime(today);
 		var t = setTimeout(startTime, 500);
 	}
 	startTime();

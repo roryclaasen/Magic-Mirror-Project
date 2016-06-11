@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Ubuntu:400,300,400italic,500,500italic,700,700italic,300italic);
-@import '../fonts/weather';
+@import '../fonts/fonts';
 
 @-webkit-viewport {
 	width: device-width;
@@ -33,11 +32,35 @@ html, body {
 		user-select: none;
 		cursor: default;
 	}
+	&.dev {
+		width: 1280px;
+		height: 1024px;
+	}
 }
 
 .content {
 	font-family: 'Ubuntu';
 	font-weight: bold;
+	div.no-connection {
+		position: relative;
+		top: 1em;
+		height: 250px;
+		text-align: center;
+		i {
+			width: 256px;
+			height: 256px;
+			display: block;
+			margin: auto;
+			&.icon-warning {
+				background: white;
+				-webkit-mask: url(/assets/image/warning.svg) center / contain no-repeat;
+			}
+		}
+		h3 {
+			margin-top: 0;
+			font-size: 3em;
+		}
+	}
 	.module {
 		z-index: 10;
 		position: fixed;
@@ -106,17 +129,35 @@ html, body {
 			font-size: 7em;
 			right: 0;
 			top: 0;
+			font-family: Ubuntu;
+			text-transform: uppercase;
+			line-height: 1.0;
 			span {
+				text-align: right;
 				display: block;
 				padding-right: 10px;
-				text-align: right;
-				text-transform: uppercase;
-				line-height: 1.0;
-				&#day, &#weekday{
+				&#day, &#weekday, &#time-clock {
 					color: rgba(255, 255, 255, 0.6575);
 				}
+				&#year, &#day, &#time {
+					font-family: Montserrat;
+				}
 				&#time {
-					font-weight: 100;
+					font-weight: normal;
+					span {
+						padding: 0;
+						width: 75px;
+						text-align: center;
+						display: inline-block;
+					}
+					.colon {
+						width: auto;
+						&:before {
+							content: ":";
+							position: relative;
+							bottom: 0.125em;
+						}
+					}
 				}
 			}
 		}
