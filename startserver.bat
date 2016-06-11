@@ -1,3 +1,12 @@
 @echo off
 title Magic Mirror
+:start
+cls
 python -m http.server 8000
+pause
+set INPUT=
+set /P INPUT="Do you want to restart? (y/n) "
+if "%INPUT%"=="y" goto start
+if "%INPUT%"=="Y" goto start
+if "%INPUT%"=="yes" goto start
+if "%INPUT%"=="Yes" goto start
