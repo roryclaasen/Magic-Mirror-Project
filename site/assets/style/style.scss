@@ -154,17 +154,16 @@ html, body {
 			left: 1em;
 			#weather {
 				width: 500px;
-				margin: 0px auto;
 				text-align: center;
 				text-transform: uppercase;
 				h2 {
-					margin: 0 0 8px;
-					color: #fff;
+					margin: 0;
+					margin-bottom: 20px;
+					font-family: Montserrat;
 					font-size: 100px;
 					font-weight: bold;
+					color: #fff;
 					text-align: center;
-					text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
-					margin-bottom: 20px;
 					i {
 						font-size: 150px;
 						line-height: 1.0;
@@ -203,6 +202,7 @@ html, body {
 									vertical-align: top;
 								}
 								&.temp {
+									font-family: Montserrat;
 									vertical-align: bottom;
 									font-size: 0.95em;
 								}
