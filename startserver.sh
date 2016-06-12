@@ -10,4 +10,5 @@ run () {
 		esac
 	done
 }
+cd site
 run

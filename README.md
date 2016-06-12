@@ -26,13 +26,13 @@ The frame has still yet to be decided... Well I can't decide right but it will p
 # Display Modules
 ### Time And Date
 Time and date is acquired by the JavaScript reference `new Date()`. The module gest updated every half second to be slightly more actuate in the display.
-<br>The code can be found in [time.js](assets/script/time.js).
+<br>The code can be found in [time.js](site/assets/script/time.js).
 
 ## Calendar
 I am using the google calendar APIs, on the first time viewing the page there is a prompt to authorise this app to access google.
-<br>The code can be found in [calendar.js](assets/script/calendar.js).
+<br>The code can be found in [calendar.js](site/assets/script/calendar.js).
 
 ### Weather
 After experimenting with different weather APIs I have ended up using [jquery.simpleWeather](http://simpleweatherjs.com).
 Simple Weather is "*a simple jQuery plugin to display current weather data for any location and doesn't get in your way*". I'm using it as it is very easy to use and it makes more sense than some of the others I tried, it also has some great examples to get stated with.
-<br>The code can be found in [forecast.js](assets/script/forecast.js).
+<br>The code can be found in [forecast.js](site/assets/script/forecast.js).

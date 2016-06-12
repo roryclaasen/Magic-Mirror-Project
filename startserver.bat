@@ -1,5 +1,6 @@
 @echo off
 title Magic Mirror
+cd site
 :start
 cls
 python -m http.server 8000

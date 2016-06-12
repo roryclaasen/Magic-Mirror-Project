@@ -2,7 +2,10 @@ var CLIENT_ID = '227617601741-e4ed1r83v5cpheaakcn411gk1h5t0gam.apps.googleuserco
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
 function checkAuth() {
-	gapi.auth.authorize({'client_id': CLIENT_ID, 'scope': SCOPES.join(' '), 'immediate': true
+	gapi.auth.authorize({
+		'client_id': CLIENT_ID,
+		'scope': SCOPES.join(' '),
+		'immediate': true
 	}, handleAuthResult);
 }
 
