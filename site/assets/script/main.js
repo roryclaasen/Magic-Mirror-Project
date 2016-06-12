@@ -33,6 +33,7 @@ $(document).ready(function() {
    }
 
    function moduleUpdate() {
+      $('#update').html((new Date()).toUTCString() );
       if (hostReachable('roryclaasen.me')) {
          updateModules(true);
          setInterval(moduleUpdate, 30 * 60 * 1000);
