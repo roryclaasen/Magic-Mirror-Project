@@ -8,7 +8,7 @@ function getWeather() {
 			html += '<li class="currently">' + weather.currently + '</li>';
 			html += '<li>' + weather.wind.direction + ' ' + weather.wind.speed + ' ' + weather.units.speed + '</li></ul>';
 			html += '<div class="week-forecast">';
-			for(var i = 0; i < /*weather.forecast.length*/ 6; i++) {
+			for(var i = 0; i < /*weather.forecast.length*/ 7; i++) {
 				html += '<div><p><span class="day">' + weather.forecast[i].day + '</span><i class="wtr icon-' + weather.forecast[i].code + '"></i><span class="temp">' + weather.forecast[i].high + '</span></p></div>';
 			}
 			html += '</div>';

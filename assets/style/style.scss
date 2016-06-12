@@ -1,21 +1,4 @@
 @import '../fonts/fonts';
-
-@-webkit-viewport {
-	width: device-width;
-}
-@-moz-viewport {
-	width: device-width;
-}
-@-ms-viewport {
-	width: device-width;
-}
-@-o-viewport {
-	width: device-width;
-}
-@viewport {
-	width: device-width;
-}
-
 html, body {
 	background-color: #000;
 	color: #fff;
@@ -37,12 +20,10 @@ html, body {
 		height: 1024px;
 	}
 }
-
 .content {
 	font-family: 'Ubuntu';
 	font-weight: bold;
 	.module {
-		z-index: 10;
 		position: fixed;
 		&.connection {
 			left: 2em;
@@ -169,7 +150,6 @@ html, body {
 			}
 		}
 		&.forecast {
-			z-index: 5;
 			top: -1em;
 			left: 1em;
 			#weather {
