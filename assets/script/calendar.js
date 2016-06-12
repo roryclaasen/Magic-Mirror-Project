@@ -2,10 +2,7 @@ var CLIENT_ID = '227617601741-e4ed1r83v5cpheaakcn411gk1h5t0gam.apps.googleuserco
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
 
 function checkAuth() {
-	gapi.auth.authorize({
-		'client_id': CLIENT_ID,
-		'scope': SCOPES.join(' '),
-		'immediate': true
+	gapi.auth.authorize({'client_id': CLIENT_ID, 'scope': SCOPES.join(' '), 'immediate': true
 	}, handleAuthResult);
 }
 
@@ -26,13 +23,11 @@ function handleAuthClick(event) {
 }
 
 function loadCalendarApi() {
-	$("#events").html('<span id="title">Loading Calendar</span>');
 	gapi.client.load('calendar', 'v3', listUpcomingEvents);
-
-	var t = setTimeout(loadCalendarApi, 30 * 60 * 1000); // (30)minutes*seconds*milliseconds // every 30 mins
 }
 
 function listUpcomingEvents() {
+	$('#events').html('<span id="title">Loading Calendar</span>');
 	var request = gapi.client.calendar.events.list({
 		'calendarId': 'primary',
 		'timeMin': (new Date()).toISOString(),

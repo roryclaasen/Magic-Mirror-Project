@@ -1,41 +1,46 @@
-function hostReachable() {
-  // Handle IE and more capable browsers
-  var xhr = new ( window.ActiveXObject || XMLHttpRequest )( "Microsoft.XMLHTTP" );
-  var status;
-
-  // Open new request as a HEAD to the root hostname with a random param to bust the cache
-  xhr.open( "HEAD", "//" + window.location.hostname + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false );
-
-  // Issue request and handle response
-  try {
-    xhr.send();
-    return ( xhr.status >= 200 && xhr.status < 300 || xhr.status === 304 );
-  } catch (error) {
-    return false;
-  }
-
+function hostReachable(site) {
+   var xhr = new (window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
+   var status;
+   xhr.open( "HEAD", "//" + site + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false);
+   try {
+      xhr.send();
+      return (xhr.status >= 200 && (xhr.status < 300 || xhr.status === 304));
+   } catch (error) {
+      return false;
+   }
 }
-function doConnectionCheck() {
-	var connection = '.connection';
-	var forecast = '.forecast';
-	var calendar = '.calendar';
-	console.log(navigator.onLine);
-	if (navigator.onLine) {
-		$(connection).hide();
-		$(forecast).show();
-		$(calendar).show();
-		return false;
-	} else {
-		$(connection).show();
-		$(forecast).hide();
-		$(calendar).hide();
-		return true;
-	}
-}
-require('dns').resolve('www.google.com', function(err) {
-  if (err) {
-     console.log("No connection");
-  } else {
-     console.log("Connected");
-  }
+
+$(document).ready(function() {
+   function updateModules(visible) {
+      var connection = '#connection';
+      var modules = '#modules';
+      if(visible) {
+         getWeather();
+         checkAuth();
+         $(connection).hide();
+         $(modules).show();
+         $(modules).children('div').each(function () {
+            $(this).show();
+         });
+      } else {
+         $(connection).show();
+         $(modules).children('div').each(function () {
+            if ($(this).hasClass('module') && !$(this).hasClass('dateTime')) {
+               $(this).hide();
+            }
+         });
+      }
+   }
+
+   function moduleUpdate() {
+      if (hostReachable('roryclaasen.me')) {
+         updateModules(true);
+         setInterval(moduleUpdate, 30 * 60 * 1000);
+      } else {
+         updateModules(false);
+         setInterval(moduleUpdate, 60 * 1000);
+      }
+   }
+   startTime();
+   moduleUpdate();
 });

@@ -10,44 +10,47 @@
 
 	<link rel="stylesheet" href="assets/style/style.min.css">
 	<script src="assets/lib/jquery/jquery-3.0.0.min.js"></script>
-	<script src="assets/script/main.js"></script>
 
 	<script src="assets/script/time.js"></script>
 
 	<script src="assets/script/calendar.js"></script>
-	<script src="https://apis.google.com/js/client.js?onload=checkAuth"></script>
+	<script src="https://apis.google.com/js/client.js"></script>
 
 	<script src="assets/lib/simpleWeather/jquery.simpleWeather.min.js"></script>
 	<script src="assets/script/forecast.js"></script>
+
+	<script src="assets/script/main.js"></script>
 </head>
 <body>
 	<div class="content">
-		<div class="module connection" id="netWarn">
+		<div class="module connection" id="connection" style="display: none;">
 			<i class="icon-warning"></i>
 			<h3>No Connection</h3>
+			<p>retrying in 1 minute</p>
 		</div>
-		<div class="module calendar">
-			<div id="events">
-				<span id="title">Loading Calendar</span>
+		<div id="modules">
+			<div class="module calendar">
+				<div id="events">
+					<span id="title">Loading Calendar</span>
+				</div>
+				<div id="authorize-div" style="display: none">
+					<span>Authorize access to Google Calendar API</span>
+					<button id="authorize-button" onclick="handleAuthClick(event)">
+						Authorize
+					</button>
+				</div>
 			</div>
-			<div id="authorize-div" style="display: none">
-				<span>Authorize access to Google Calendar API</span>
-				<button id="authorize-button" onclick="handleAuthClick(event)">
-					Authorize
-				</button>
+			<div class="module dateTime">
+				<span id="year"></span>
+				<span id="weekday"></span>
+				<span id="day"></span>
+				<span id="month"></span>
+				<span id="time"></span>
+				<span id="time-clock"></span>
 			</div>
-		</div>
-		<div class="module dateTime">
-			<span id="year"></span>
-			<span id="weekday"></span>
-			<span id="day"></span>
-			<span id="month"></span>
-			<span id="time"></span>
-			<span id="time-clock"></span>
-		</div>
-		<div class="module forecast">
-			<div id="weather"></div>
-			<!-- <iframe id="forecast_embed" type="text/html" frameborder="0" height="100%" width="100%"> </iframe> -->
+			<div class="module forecast">
+				<div id="weather"></div>
+			</div>
 		</div>
 	</div>
 </body>

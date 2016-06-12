@@ -41,29 +41,40 @@ html, body {
 .content {
 	font-family: 'Ubuntu';
 	font-weight: bold;
-	div.no-connection {
-		position: relative;
-		top: 1em;
-		height: 250px;
-		text-align: center;
-		i {
-			width: 256px;
-			height: 256px;
-			display: block;
-			margin: auto;
-			&.icon-warning {
-				background: white;
-				-webkit-mask: url(/assets/image/warning.svg) center / contain no-repeat;
-			}
-		}
-		h3 {
-			margin-top: 0;
-			font-size: 3em;
-		}
-	}
 	.module {
 		z-index: 10;
 		position: fixed;
+		&.connection {
+			left: 2em;
+			top: 1em;
+			height: 250px;
+			text-align: center;
+			* {
+				margin: 0;
+			}
+			i {
+				width: 256px;
+				height: 256px;
+				display: block;
+				margin: auto;
+				&.icon-warning {
+					background: white;
+					-webkit-mask: url(/assets/image/warning.svg) center / contain no-repeat;
+				}
+			}
+			h3 {
+				font-size: 3em;
+			}
+			p {
+				font-family: Montserrat;
+				font-size: 1em;
+				text-transform: uppercase;
+				#retry {
+					font-size: 2em;
+					font-weight: bold;
+				}
+			}
+		}
 		&.calendar {
 			left: 2em;
 			top: 58%;
@@ -192,7 +203,7 @@ html, body {
 						}
 					}
 				}
-				.forecast {
+				.week-forecast {
 					padding-top: 10px;
 					text-align: center;
 					width: 100%;
