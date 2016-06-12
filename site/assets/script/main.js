@@ -10,6 +10,16 @@ function hostReachable(site) {
    }
 }
 
+var getUrlParameter = function getUrlParameter(sParam) {
+    var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL.split('&'), sParameterName, i;
+    for (i = 0; i < sURLVariables.length; i++) {
+        sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] === sParam) {
+            return sParameterName[1] === undefined ? true : sParameterName[1];
+        }
+    }
+};
+
 $(document).ready(function() {
    function updateModules(visible) {
       var connection = '#connection';
@@ -33,7 +43,10 @@ $(document).ready(function() {
    }
 
    function moduleUpdate() {
-      $('#update').html((new Date()).toUTCString() );
+      var lastupdate = getUrlParameter('lastupdate');
+      console.log(lastupdate);
+      if (lastupdate == 'false' || lastupdate == 'false/') $('#update').hide();
+      $('#update > span').html((new Date()).toUTCString());
       if (hostReachable('roryclaasen.me')) {
          updateModules(true);
          setInterval(moduleUpdate, 30 * 60 * 1000);
