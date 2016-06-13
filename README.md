@@ -36,3 +36,13 @@ I am using the google calendar APIs, on the first time viewing the page there is
 After experimenting with different weather APIs I have ended up using [jquery.simpleWeather](http://simpleweatherjs.com).
 Simple Weather is "*a simple jQuery plugin to display current weather data for any location and doesn't get in your way*". I'm using it as it is very easy to use and it makes more sense than some of the others I tried, it also has some great examples to get stated with.
 <br>The code can be found in [forecast.js](site/assets/script/forecast.js).
+
+# Server
+Because of google api authentication, the mirror MUST be hosted on a webserver to work.<br>
+Only the servers listed bellow are *authorised JavaScript origins*
+- `localhost:8000`
+
+	Provided are both [batch](startserver.bat) and [shell](startserver.sh) server scripts. The only dependency for these is [python 3.*.*](https://www.python.org/).
+- `mirror.dev`
+
+	To achive this domain I use the npm package [hotel](https://github.com/typicode/hotel#hotel--)).
