@@ -51,7 +51,7 @@ function listUpcomingEvents() {
 				if (!when) {
 					when = event.start;
 				}
-				addEvent(event, when)
+				addEvent(event, when, !(((when+"").indexOf("T") > -1)));
 			}
 		} else {
 			$('#title').html('No upcoming events found');
@@ -59,20 +59,34 @@ function listUpcomingEvents() {
 	});
 }
 
-function addEvent(calendarEvent, date) {
+function checkTime(i) {
+	if (i < 10) {i = "0" + i};  // add zero in front of numbers < 10
+	return i;
+}
+
+function addEvent(calendarEvent, date, allday) {
 	var content = calendarEvent.summary;
 
 	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
 	var firstDate = new Date();
 	var secondDate = new Date(date);
-	if (!(secondDate instanceof Date) || secondDate == "Invalid Date"){
+	if (!(secondDate instanceof Date) || secondDate == "Invalid Date") {
 		var parts = date.date.split("-");
 		secondDate = new Date(parts[0], parts[1] - 1, parts[2]);
 	}
 	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
-	var contentDays = diffDays + " days to go"
-	if (diffDays == 0) contentDays = "today";
+	var contentDays = diffDays + " days to go";
+
 	if (diffDays == 1) contentDays = diffDays + " day to go";
+	if (allday) {
+		if (firstDate.getDate() == secondDate.getDate() && firstDate.getMonth() == secondDate.getMonth()) {
+			contentDays = "today";
+		}
+	}
+	if (diffDays == 0) {
+		if (allday) contentDays = "today";
+		else contentDays = "today at " + checkTime(secondDate.getHours()) + ":" +  checkTime(secondDate.getMinutes());
+	}
 
 	$('#events').append('<span class="event"><span class="summary">' + content + '</span><span class="days">' + contentDays + '</span></span>');
 }
