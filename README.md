@@ -14,9 +14,8 @@ As of yet is still yet to be bought but it will most likely be bought from [Cut 
 The frame has still yet to be decided... Well I can't decide right but it will probably be something from B&Q (pre finished) or a paint job done by myself.
 
 ## Peripherals
-- [7 port USB Hub](https://www.amazon.co.uk/Mobilizers-Switches-Notebook-Computer-Tablets/dp/B008543CKI)
+- USB Hub
 
-	Yes this is a bit of an overkill allowing so many ports when in reality I may only need 3 or 4
 - [Tontec 150Mbps USB Wifi Dongle Adapter for Raspberry Pi](https://www.amazon.co.uk/Tontec-150Mbps-Adapter-Raspberry-Windows/dp/B010AKMF3Y/)
 
 - Mouse and keyboard
