@@ -1,4 +1,5 @@
 #!/bin/bash
 cd /home/pi/git/mirror/
 git pull
-lxtermimal -e ./startserver.sh
+lxterminal -e ./startserver.sh
+exit 0
