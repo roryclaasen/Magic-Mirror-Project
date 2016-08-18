@@ -15,4 +15,4 @@ display() {
 init
 server &
 display
-exit 0
+read -p "Press [Enter] key to exit script..."
