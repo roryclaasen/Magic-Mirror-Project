@@ -47,7 +47,7 @@ $(document).ready(function() {
       console.log(lastupdate);
       if (lastupdate == 'false' || lastupdate == 'false/') $('#update').hide();
       $('#update > span').html((new Date()).toUTCString());
-      if (hostReachable('roryclaasen.me')) {
+      if (hostReachable('google.co.uk')) {
          updateModules(true);
          setInterval(moduleUpdate, 30 * 60 * 1000);
       } else {

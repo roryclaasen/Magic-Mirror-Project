@@ -6,6 +6,7 @@ html, body {
 	padding: 0;
 	width: 100vw;
 	height: 100vh;
+	overflow: none;
 	&, *{
 		-webkit-touch-callout: none; /* iOS Safari */
 		-webkit-user-select: none;   /* Chrome/Safari/Opera */
