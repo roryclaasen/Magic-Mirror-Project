@@ -44,7 +44,7 @@ $(document).ready(function() {
 
    function moduleUpdate() {
       var lastupdate = getUrlParameter('lastupdate');
-      console.log(lastupdate);
+      // console.log(lastupdate);
       if (lastupdate == 'false' || lastupdate == 'false/') $('#update').hide();
       $('#update > span').html((new Date()).toUTCString());
       if (hostReachable('google.co.uk')) {
