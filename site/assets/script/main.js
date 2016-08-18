@@ -24,7 +24,7 @@ $(document).ready(function() {
    function updateModules(visible) {
       var connection = '#connection';
       var modules = '#modules';
-      if(visible) {
+      if (visible) {
          getWeather();
          checkAuth();
          $(connection).hide();

@@ -7,9 +7,9 @@ server() {
 	lxterminal -e ./startserver.sh
 }
 display() {
-	sleep 5
+	sleep 10
 	sudo -u pi epiphany-browser -a --profile ~/.config http://localhost:8000 --display=:0 &
-	sleep 15s;
+	sleep 30s;
 	xte "key F11" -x:0
 }
 init
