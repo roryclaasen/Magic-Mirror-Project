@@ -6,7 +6,7 @@ html, body {
 	padding: 0;
 	width: 100vw;
 	height: 100vh;
-	overflow: none;
+	overflow: hidden;
 	&, *{
 		-webkit-touch-callout: none; /* iOS Safari */
 		-webkit-user-select: none;   /* Chrome/Safari/Opera */
@@ -14,7 +14,7 @@ html, body {
 		-moz-user-select: none;      /* Firefox */
 		-ms-user-select: none;       /* Internet Explorer/Edge */
 		user-select: none;
-		cursor: default;
+		cursor: none;
 	}
 	&.dev {
 		width: 1280px;
