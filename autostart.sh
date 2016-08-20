@@ -10,7 +10,9 @@ display() {
 	sleep 10
 	./startbrowser.sh
 }
-echo Autostart has been started
+echo -----------------------------
+echo  Autostart has been started 
+echo -----------------------------
 init
 server &
 display
