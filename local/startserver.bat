@@ -1,6 +1,6 @@
 @echo off
 title Magic Mirror
-cd site
+cd ../site
 :start
 cls
 python -m SimpleHTTPServer 8000
