@@ -63,7 +63,7 @@ html, body {
 		}
 		&.calendar {
 			left: 2em;
-			top: 58%;
+			bottom: -10px;
 			width: auto;
 			height: auto;
 			#authorize-div {
@@ -116,14 +116,14 @@ html, body {
 					height: 100%;
 					width: 100%;
 					content: "";
-					background: linear-gradient(to top, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0.5) 30%, rgba(0, 0, 0, 0) 50%);
+					background: linear-gradient(to top, rgba(0, 0, 0, 1) 15px, rgba(0, 0, 0, 0.75) 30px, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0) 50%);
 					// Using 9 results now instead of 10 as the 10th gets hidden
 				}
 			}
 		}
 		&.dateTime {
 			float: right;
-			font-size: 7em;
+			font-size: 6em;
 			right: 0;
 			top: 0;
 			font-family: Ubuntu;
@@ -133,9 +133,6 @@ html, body {
 				text-align: right;
 				display: block;
 				padding-right: 10px;
-				&#day, &#weekday, &#time-clock {
-					color: rgba(255, 255, 255, 0.6575);
-				}
 				&#year, &#day, &#time {
 					font-family: Montserrat;
 				}
