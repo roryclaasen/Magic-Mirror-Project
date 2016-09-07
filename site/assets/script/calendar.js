@@ -1,5 +1,7 @@
 var CLIENT_ID = '227617601741-e4ed1r83v5cpheaakcn411gk1h5t0gam.apps.googleusercontent.com';
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
+var maxEvent = 9;
+var addedEvents = 0;
 
 function checkAuth() {
 	gapi.auth.authorize({
@@ -31,12 +33,13 @@ function loadCalendarApi() {
 
 function listUpcomingEvents() {
 	$('#events').html('<span id="title">Loading Calendar</span>');
+	addedEvents = 0;
 	var request = gapi.client.calendar.events.list({
 		'calendarId': 'primary',
 		'timeMin': (new Date()).toISOString(),
 		'showDeleted': false,
 		'singleEvents': true,
-		'maxResults': 9,
+		'maxResults': maxEvent,
 		'orderBy': 'startTime'
 	});
 
@@ -65,28 +68,32 @@ function checkTime(i) {
 }
 
 function addEvent(calendarEvent, date, allday) {
-	var content = calendarEvent.summary;
+	addedEvents++;
+	if (addedEvents < maxEvent) {
 
-	var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
-	var firstDate = new Date();
-	var secondDate = new Date(date);
-	if (!(secondDate instanceof Date) || secondDate == "Invalid Date") {
-		var parts = date.date.split("-");
-		secondDate = new Date(parts[0], parts[1] - 1, parts[2]);
-	}
-	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
-	var contentDays = diffDays + " days to go";
+		var content = calendarEvent.summary;
 
-	if (diffDays == 1) contentDays = "tomorrow";
-	if (allday) {
-		if (firstDate.getDate() == secondDate.getDate() && firstDate.getMonth() == secondDate.getMonth()) {
-			contentDays = "today";
+		var oneDay = 24*60*60*1000; // hours*minutes*seconds*milliseconds
+		var firstDate = new Date();
+		var secondDate = new Date(date);
+		if (!(secondDate instanceof Date) || secondDate == "Invalid Date") {
+			var parts = date.date.split("-");
+			secondDate = new Date(parts[0], parts[1] - 1, parts[2]);
 		}
-	}
-	if (diffDays == 0) {
-		if (allday) contentDays = "today";
-		else contentDays = "today at " + checkTime(secondDate.getHours()) + ":" +  checkTime(secondDate.getMinutes());
-	}
+		var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
+		var contentDays = diffDays + " days to go";
 
-	$('#events').append('<span class="event"><span class="summary">' + content + '</span><span class="days">' + contentDays + '</span></span>');
+		if (diffDays == 1) contentDays = "tomorrow";
+		if (allday) {
+			if (firstDate.getDate() == secondDate.getDate() && firstDate.getMonth() == secondDate.getMonth()) {
+				contentDays = "today";
+			}
+		}
+		if (diffDays == 0) {
+			if (allday) contentDays = "today";
+			else contentDays = "today at " + checkTime(secondDate.getHours()) + ":" +  checkTime(secondDate.getMinutes());
+		}
+
+		$('#events').append('<span class="event"><span class="summary">' + content + '</span><span class="days">' + contentDays + '</span></span>');
+	}
 }
