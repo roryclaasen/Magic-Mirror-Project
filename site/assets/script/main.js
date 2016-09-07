@@ -11,17 +11,22 @@ function hostReachable(site) {
 }
 
 var getUrlParameter = function getUrlParameter(sParam) {
-    var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL.split('&'), sParameterName, i;
-    for (i = 0; i < sURLVariables.length; i++) {
-        sParameterName = sURLVariables[i].split('=');
-        if (sParameterName[0] === sParam) {
-            return sParameterName[1] === undefined ? true : sParameterName[1];
-        }
-    }
+   var sPageURL = decodeURIComponent(window.location.search.substring(1)), sURLVariables = sPageURL.split('&'), sParameterName, i;
+   for (i = 0; i < sURLVariables.length; i++) {
+      sParameterName = sURLVariables[i].split('=');
+      if (sParameterName[0] === sParam) {
+         return sParameterName[1] === undefined ? true : sParameterName[1];
+      }
+   }
 };
 
 $(document).ready(function() {
    function updateModules(visible) {
+      var lastupdate = getUrlParameter('lastupdate');
+      console.log("New updte " + lastupdate);
+      if (lastupdate == 'false' || lastupdate == 'false/') $('#update').hide();
+      $('#update > span').html((new Date()).toUTCString());
+
       var connection = '#connection';
       var modules = '#modules';
       if (visible) {
@@ -42,19 +47,37 @@ $(document).ready(function() {
       }
    }
 
-   function moduleUpdate() {
-      var lastupdate = getUrlParameter('lastupdate');
-      // console.log(lastupdate);
-      if (lastupdate == 'false' || lastupdate == 'false/') $('#update').hide();
-      $('#update > span').html((new Date()).toUTCString());
-      if (hostReachable('roryclaasen.me')) {
-         updateModules(true);
-         setInterval(moduleUpdate, 30 * 60 * 1000);
+   var connected = true;
+   var updated = false;
+
+   function mainLoop() {
+      var today = new Date();
+      updateTime(today);
+      if (!connected) {
+         if (today.getSeconds() == 0) {
+            connected = hostReachable('roryclaasen.me');
+            updateModules(connected);
+         }
       } else {
-         updateModules(false);
-         setInterval(moduleUpdate, 60 * 1000);
+         if (today.getMinutes() == 0 || today.getMinutes() == 30) {
+            if (!updated) {
+               updated = true;
+               connected = hostReachable('roryclaasen.me');
+               if (connected) {
+                  updateModules(true);
+               }
+            }
+         } else updated = false;
       }
+      setTimeout(mainLoop, 500);
    }
-   startTime();
-   moduleUpdate();
+
+   function start() {
+      connected = hostReachable('roryclaasen.me');
+      updateTime(new Date());
+      updateModules(connected);
+      mainLoop();
+   }
+
+   start();
 });

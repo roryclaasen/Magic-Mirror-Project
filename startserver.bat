@@ -3,7 +3,7 @@ title Magic Mirror
 cd site
 :start
 cls
-python -m http.server 8000
+python -m SimpleHTTPServer 8000
 :exit
 set INPUT=
 set /P INPUT="Do you want to restart? (yes/no) "

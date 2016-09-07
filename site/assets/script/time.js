@@ -40,9 +40,7 @@ function doDate(today) {
 	$(year).html(today.getFullYear());
 }
 
-function startTime() {
-	var today = new Date();
+function updateTime(today) {
 	doDate(today);
 	doTime(today);
-	var t = setTimeout(startTime, 500);
 }
