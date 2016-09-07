@@ -77,7 +77,7 @@ function addEvent(calendarEvent, date, allday) {
 	var diffDays = Math.round(Math.abs((firstDate.getTime() - secondDate.getTime()) / (oneDay)));
 	var contentDays = diffDays + " days to go";
 
-	if (diffDays == 1) contentDays = diffDays + " day to go";
+	if (diffDays == 1) contentDays = "tomorrow";
 	if (allday) {
 		if (firstDate.getDate() == secondDate.getDate() && firstDate.getMonth() == secondDate.getMonth()) {
 			contentDays = "today";
