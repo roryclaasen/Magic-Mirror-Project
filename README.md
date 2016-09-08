@@ -41,7 +41,7 @@ Because of google api authentication, the mirror MUST be hosted on a webserver t
 Only the servers listed bellow are *authorised JavaScript origins*
 - `localhost:8000`
 
-	Provided are both [batch](startserver.bat) and [shell](startserver.sh) server scripts. The only dependency for these is [python `3.*.*`](https://www.python.org/). Note that my Pi python is still using [python `2.*.*`](https://www.python.org/)
+	Provided are both [batch](startserver.bat) and [shell](startserver.sh) server scripts. The only dependency for these is [python `2.*.*`](https://www.python.org/)
 - `mirror.dev`
 
 	To achive this domain I use the npm package [hotel](https://github.com/typicode/hotel#hotel--).
