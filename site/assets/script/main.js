@@ -78,6 +78,4 @@ $(document).ready(function() {
       updateModules(connected);
       mainLoop();
    }
-
-   start();
 });
