@@ -20,7 +20,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
    }
 };
 
-$(document).ready(function() {
+//$(document).ready(function() {
    function updateModules(visible) {
       var lastupdate = getUrlParameter('lastupdate');
       console.log("New updte " + lastupdate);
@@ -78,4 +78,4 @@ $(document).ready(function() {
       updateModules(connected);
       mainLoop();
    }
-});
+//});
