@@ -22,7 +22,10 @@ function handleAuthResult(authResult) {
 }
 
 function handleAuthClick(event) {
-	gapi.auth.authorize({client_id: CLIENT_ID, scope: SCOPES, immediate: false
+	gapi.auth.authorize({
+		client_id: CLIENT_ID,
+		scope: SCOPES,
+		immediate: false
 	}, handleAuthResult);
 	return false;
 }
