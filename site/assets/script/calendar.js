@@ -4,11 +4,15 @@ var maxEvent = 9;
 var addedEvents = 0;
 
 function checkAuth() {
-	gapi.auth.authorize({
-		'client_id': CLIENT_ID,
-		'scope': SCOPES.join(' '),
-		'immediate': true
-	}, handleAuthResult);
+	try {
+		gapi.auth.authorize({
+			'client_id': CLIENT_ID,
+			'scope': SCOPES.join(' '),
+			'immediate': true
+		}, handleAuthResult);
+	} catch(error){
+		console.log(error);
+	}
 }
 
 function handleAuthResult(authResult) {
