@@ -14,3 +14,13 @@ compress_html:
 sass:
    sass_dir: assets/style
    style: :compressed
+
+module:
+    weather:
+        visible: true
+        location: Rowlands Castle
+    clock:
+        visible: true
+    calender:
+        visible: true
+        maxEvents: 9

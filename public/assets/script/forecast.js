@@ -1,6 +1,10 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
 function getWeather() {
 	$.simpleWeather({
-		location: 'Rowlands Castle',
+		location: '{{ site.module.weather.location }}',
 		unit: 'c',
 		success: function(weather) {
 			html = '<h2><i class="wtr icon-' + weather.code + '"></i> ' + weather.temp + '&deg;' + weather.units.temp + '</h2>';

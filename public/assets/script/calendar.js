@@ -1,6 +1,10 @@
+---
+# this ensures Jekyll reads the file to be transformed into CSS later
+# only Main files contain this front matter, not partials.
+---
 var CLIENT_ID = '227617601741-e4ed1r83v5cpheaakcn411gk1h5t0gam.apps.googleusercontent.com';
 var SCOPES = ["https://www.googleapis.com/auth/calendar.readonly"];
-var maxEvent = 9;
+var maxEvent = {% if site.module.calender.maxEvents %}{{ site.module.calender.maxEvents }}{% else %}9{% endif %};
 var addedEvents = 0;
 
 function checkAuth() {
