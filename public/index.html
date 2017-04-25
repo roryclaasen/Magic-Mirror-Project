@@ -1,0 +1,35 @@
+---
+layout: default
+---
+<div id="update" class="updated">
+    Last Update: <span></span>
+</div>
+<div class="module connection" id="connection" style="display: none;">
+    <i class="icon-warning"></i>
+    <h3>No Connection</h3>
+    <p>retrying in 1 minute</p>
+</div>
+<div id="modules">
+    <div class="module calendar">
+        <div id="events">
+            <span id="title">Loading Calendar</span>
+        </div>
+        <div id="authorize-div" style="display: none">
+            <span>Authorize access to Google Calendar API</span>
+            <button id="authorize-button" onclick="handleAuthClick(event)">
+                Authorize
+            </button>
+        </div>
+    </div>
+    <div class="module dateTime">
+        <span id="year"></span>
+        <span id="weekday"></span>
+        <span id="day"></span>
+        <span id="month"></span>
+        <span id="time"></span>
+        <span id="time-clock"></span>
+    </div>
+    <div class="module forecast">
+        <div id="weather"></div>
+    </div>
+</div>

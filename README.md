@@ -1,3 +1,5 @@
+# I am currently in the process of fixing the project. Functionality may not work till this process if complete
+
 # Magic Mirror Project
 Over the summer I am going to make a magic mirror using the Pi zero. This repository is code that will do the visualization of the mirror
 
@@ -28,7 +30,7 @@ Time and date is acquired by the JavaScript reference `new Date()`. The module g
 <br>The code can be found in [time.js](site/assets/script/time.js).
 
 ## Calendar
-I am using the google calendar APIs, on the first time viewing the page there is a prompt to authorise this app to access google.
+I am using the google calendar APIs, on the first time viewing the page there is a prompt to authorize this app to access google.
 <br>The code can be found in [calendar.js](site/assets/script/calendar.js).
 
 ### Weather
@@ -38,13 +40,13 @@ Simple Weather is "*a simple jQuery plugin to display current weather data for a
 
 # Server
 Because of google api authentication, the mirror MUST be hosted on a webserver to work.<br>
-Only the servers listed bellow are *authorised JavaScript origins*
+Only the servers listed bellow are *authorized JavaScript origins*
 - `localhost:8000`
 
 	Provided are both [batch](startserver.bat) and [shell](startserver.sh) server scripts. The only dependency for these is [python `2.*.*`](https://www.python.org/)
 - `mirror.dev`
 
-	To achive this domain I use the npm package [hotel](https://github.com/typicode/hotel#hotel--).
+	To achieve this domain I use the npm package [hotel](https://github.com/typicode/hotel#hotel--).
 
 # Start On Boot
 To make the program start when the Pi boots into desktop I have done this.<br>
@@ -61,4 +63,4 @@ However this is only the first part, to make the program open Epiphany I had to 
 ```bash
 sudo apt-get install xautomation
 ```
-And now I now the [autostart](autostart.sh) file will run correctly
+And now I now the [auto start](autostart.sh) file will run correctly
