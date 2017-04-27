@@ -69,7 +69,7 @@ var updated = false;
 
 function mainLoop() {
     var today = new Date();
-    {% if site.module.time.visible %}updateTime(today);{% endif %}
+    {% if site.module.clock.visible %}updateTime(today);{% endif %}
     if (!googleLoaded) {
         if (today.getSeconds() == 0) {
             loadGoogleScript();
