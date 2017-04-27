@@ -62,6 +62,7 @@ function updateModules(visible) {
     }
 }
 
+var started = false;
 var googleLoaded = false;
 var connected = true;
 var updated = false;
@@ -76,14 +77,14 @@ function mainLoop() {
     }
     if (!connected) {
         if (today.getSeconds() == 0) {
-            connected = hostReachable('www.googleapis.com');
+            connected = hostReachable('roryclaasen.me');
             updateModules(connected);
         }
     } else {
         if (today.getMinutes() == 0 || today.getMinutes() == 30) {
             if (!updated) {
                 updated = true;
-                connected = hostReachable('www.googleapis.com');
+                connected = hostReachable('roryclaasen.me');
                 if (connected) {
                     updateModules(true);
                 }
@@ -94,14 +95,15 @@ function mainLoop() {
 }
 
 function start() {
-    connected = hostReachable('www.googleapis.com');
+    connected = hostReachable('roryclaasen.me');
     {% if site.module.clock.visible %}updateTime(new Date());{% endif %}
     updateModules(connected);
-    mainLoop();
+    if (!started) mainLoop();
+    started = true;
 }
 
 function loadGoogleScript() {
-    {% if site.module.calendar.visible %}
+    {% if site.module.calender.visible %}
     var scriptId = "googlescript";
     var scriptTag = document.getElementById(scriptId);
     if (scriptTag != undefined) scriptTag.remove();
@@ -118,8 +120,8 @@ function loadGoogleScript() {
         googleLoaded = true;
     }
     function callbackFail(e) {
-    console.log("Starting with fail callback");
-    googleLoaded = false;
+        console.log("Starting with fail callback");
+        googleLoaded = false;
         start();
     }
     {% else %}
