@@ -1,0 +1,26 @@
+title: Magic Mirror
+description: A Mirror Display
+
+source: "public"
+
+author: Rory Claasen
+author_url: "http://roryclaasen.me"
+
+compress_html:
+  comments: ["<!-- ", " -->"]
+  clippings: all
+  startings: [html, head, body]
+
+sass:
+   sass_dir: assets/style
+   style: :compressed
+
+module:
+    weather:
+        visible: true
+        location: Rowlands Castle
+    clock:
+        visible: true
+    calender:
+        visible: true
+        maxEvents: 9

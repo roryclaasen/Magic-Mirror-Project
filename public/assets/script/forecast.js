@@ -1,6 +1,9 @@
+---
+# this ensures Jekyll reads the file and can uses liquid
+---
 function getWeather() {
 	$.simpleWeather({
-		location: 'Rowlands Castle',
+		location: '{{ site.module.weather.location }}',
 		unit: 'c',
 		success: function(weather) {
 			html = '<h2><i class="wtr icon-' + weather.code + '"></i> ' + weather.temp + '&deg;' + weather.units.temp + '</h2>';
