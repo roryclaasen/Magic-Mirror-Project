@@ -29,7 +29,7 @@ sudo gem install jekyll
 
 echo "A reboot is required for this display to work"
 read -r -p "Do you want to reboot now? [y/N] " response
-response=${response,,}    # tolower
+response=${response,,}
 if [[ "$response" =~ ^(yes|y)$ ]]
     sudo reboot
 fi
