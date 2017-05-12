@@ -10,7 +10,7 @@ if [ $? -eq 0 ]; then
 else
     echo "Git repository MAY not be up to date"
 fi
-git log --name-status HEAD^..HEAD
+# git log --name-status HEAD^..HEAD
 
 yes | sudo apt-get x11-xserver-utils unclutter
 
