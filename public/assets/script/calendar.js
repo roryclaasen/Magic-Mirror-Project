@@ -21,7 +21,7 @@ function checkAuth() {
 function handleAuthResult(authResult) {
 	var authorizeDiv = document.getElementById('authorize-div');
 	if (authResult && !authResult.error) {
-		// authorizeDiv.style.display = 'none';
+		authorizeDiv.style.display = 'none';
 		loadCalendarApi();
 	} else {
 		authorizeDiv.style.display = 'inline';

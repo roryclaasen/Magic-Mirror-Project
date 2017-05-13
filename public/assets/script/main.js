@@ -38,7 +38,7 @@ function updateModules(visible) {
     var lastupdate = getUrlParameter('lastupdate');
     if (lastupdate != undefined) {
         console.log("New update " + lastupdate);
-        if (lastupdate == 'false' || lastupdate == 'false/') $('#update').hide();
+        if (lastupdate == 'true' || lastupdate == 'true/') $('#update').show();
     } else console.log("No last update arg... showing by deafult");
     $('#update > span').html((new Date()).toUTCString());
 
