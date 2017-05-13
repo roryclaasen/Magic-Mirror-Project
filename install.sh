@@ -21,7 +21,8 @@ echo "@lxpanel --profile LXDE-pi
 @xset -dpms
 @xset s noblank" > ~/.config/lxsession/LXDE-pi/autostart
 
-echo "lxterminal -e \"$PWD/start.sh\"" >> ~/.config/lxsession/LXDE-pi/autostart
+echo "@cd $PWD
+lxterminal -e \"./start.sh\"" >> ~/.config/lxsession/LXDE-pi/autostart
 
 echo "Making sure that Ruby and Jekyll are installed on this system"
 yes | sudo apt-get install ruby-full
