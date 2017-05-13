@@ -28,7 +28,7 @@ yes | sudo apt-get install ruby-full
 sudo gem install jekyll --no-ri --no-rdoc
 
 echo "A reboot is required for this display to work"
-read -r -p "Do you want to reboot now? [Y/n]" response
-if [[ $response =~ ^(yes|y| ) ]] | [ -z $response ]; then
-   your-action-here
-fi
+# read -r -p "Do you want to reboot now? [Y/n]" response
+# if [[ $response =~ ^(yes|y| ) ]] | [ -z $response ]; then
+#    your-action-here
+# fi
