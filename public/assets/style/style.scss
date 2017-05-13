@@ -11,10 +11,6 @@ html, body {
 	width: 100vw;
 	height: 100vh;
 	overflow: hidden;
-	&.dev {
-		width: 1280px;
-		height: 1024px;
-	}
 }
 .content {
 	font-family: 'Ubuntu';
@@ -111,34 +107,38 @@ html, body {
 			}
 		}
 		&.dateTime {
-			float: right;
-			font-size: 6em;
-			right: 0;
 			top: 0;
-			font-family: Ubuntu;
+			font-size: 12em;
 			text-transform: uppercase;
-			line-height: 1.0;
-			span {
-				text-align: right;
+			div {
 				display: block;
-				padding-right: 10px;
-				&#year, &#day, &#time { font-family: Montserrat; }
-				&#time {
-					// font-weight: normal;
-					span {
-						padding: 0;
-						width: 75px;
-						text-align: center;
-						display: inline-block;
+				span {
+					padding: 0;
+					padding-right: 10px;
+					text-align: center;
+				}
+				&.clock {
+					font-family: Montserrat;
+					line-height: 1.0;
+					#time {
+						padding-bottom: 0.2em;
+						span {
+							display: inline-block;
+							padding: 0;
+							width: 0.65em;
+						}
 					}
 					.colon {
-						width: auto;
 						&:before {
 							content: ":";
 							position: relative;
 							bottom: 0.125em;
 						}
 					}
+				}
+				&.date {
+					font-size: 0.33em;
+					#day, #year { font-family: Montserrat; }
 				}
 			}
 		}
