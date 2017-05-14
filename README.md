@@ -4,6 +4,43 @@
 
 This project is my attempt at a *personal* Magic Mirror.
 
+# Config
+
+All config can be found in the [Jekyll config](_config.yml) file. However for the weather module to work a DarkSky API key is needed.
+
+## Private Config
+
+A file called `_private_config.yml` needs to be created!
+
+### Example
+
+```yml
+module:
+    weather:
+        key: "THISISANAPIKEY"
+```
+
+# Display Modules
+
+### Time And Date
+
+Time and date is acquired by the JavaScript reference `new Date()`. The module gest updated every half second to be slightly more actuate in the display.
+
+The code can be found in [time.js](public/assets/script/time.js).
+
+## Calendar
+
+I am using the google calendar APIs, on the first time viewing the page there is a prompt to authorize this app to access google.
+
+The code can be found in [calendar.js](public/assets/script/calendar.js).
+
+### Weather
+
+After using [jquery.simpleWeather](http://simpleweatherjs.com) for a while I decided to change to use the [DarkSky Api](https://darksky.net/dev/) as it has a great up time and is well supported.
+
+
+The code can be found in [forecast.js](public/assets/script/forecast.js).
+
 # My setup
 
 ### Monitor
@@ -29,24 +66,3 @@ The frame I used was build from two frames bought from amazon. I can't remember 
 - Mouse and keyboard
 
 	These will be plugged in when I need to. They are not essential when the mirror is working
-
-# Display Modules
-
-### Time And Date
-
-Time and date is acquired by the JavaScript reference `new Date()`. The module gest updated every half second to be slightly more actuate in the display.
-
-The code can be found in [time.js](public/assets/script/time.js).
-
-## Calendar
-
-I am using the google calendar APIs, on the first time viewing the page there is a prompt to authorize this app to access google.
-
-The code can be found in [calendar.js](public/assets/script/calendar.js).
-
-### Weather
-
-After experimenting with different weather APIs I have ended up using [jquery.simpleWeather](http://simpleweatherjs.com).
-Simple Weather is "*a simple jQuery plugin to display current weather data for any location and doesn't get in your way*". I'm using it as it is very easy to use and it makes more sense than some of the others I tried, it also has some great examples to get stated with.
-
-The code can be found in [forecast.js](public/assets/script/forecast.js).

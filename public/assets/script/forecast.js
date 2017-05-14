@@ -1,25 +1,67 @@
 ---
 # this ensures Jekyll reads the file and can uses liquid
 ---
+var apiKey = "{{ site.module.weather.key }}";
+var lat = "{{ site.module.weather.latitude }}";
+var long = "{{ site.module.weather.longitude }}"
+var units = "uk"
+var darksky = "https://api.darksky.net/forecast/" + apiKey + "/" + lat + "," + long + "?units=" + units + "&extend=minutely,hourly";
 function getWeather() {
-	$.simpleWeather({
-		location: '{{ site.module.weather.location }}',
-		unit: 'c',
-		success: function(weather) {
-			html = '<h2><i class="wtr icon-' + weather.code + '"></i> ' + weather.temp + '&deg;' + weather.units.temp + '</h2>';
-			html += '<ul><li>' + weather.city + ', ' + weather.region + '</li>';
-			html += '<li class="currently">' + weather.currently + '</li>';
-			html += '<li>' + weather.wind.direction + ' ' + weather.wind.speed + ' ' + weather.units.speed + '</li></ul>';
-			html += '<div class="week-forecast">';
-			for(var i = 0; i < /*weather.forecast.length*/ 7; i++) {
-				html += '<div><p><span class="day">' + weather.forecast[i].day + '</span><i class="wtr icon-' + weather.forecast[i].code + '"></i><span class="temp">' + weather.forecast[i].high + '</span></p></div>';
-			}
-			html += '</div>';
-			$("#weather").html(html);
-		},
-		error: function(error) {
-			console.log("error");
-			$("#weather").html('<p>' + error + '</p>');
-		}
+	$.ajax({
+        url: darksky,
+    	// dataType: 'application/json',
+  		dataType: "jsonp",
+		type: "GET",
+        error: function(data) {
+        	// TODO error
+			console.log(data);
+        },
+        success: function(data) {
+			var currently = data.currently;
+			var week = data.daily;
+
+			var todayDate = new Date(currently.time * 1000);
+			console.log(currently);
+			console.log(week);
+			$('#weather .current .icon.' + getCssIconName(currently.icon)).show();
+			$('#weather .current .temp').html(currently.temperature + "&deg;C");
+
+			// $('#weather .week .summary').html(week.summary);
+			$('#weather .week .look').html('');
+			$.each(week.data, function(index, day) {
+				var date = new Date(day.time * 1000);
+				if (date.getDate() == todayDate.getDate()) return;
+				var weekNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+				var dayWeek = weekNames[date.getDay()];
+				$('#weather .week .look').append('<div class="day ' + dayWeek + '"></div>');
+				var current = $('#weather .week .look .day.' + dayWeek);
+
+				var icon = $('#weather .current .icon.' + getCssIconName(day.icon)).clone();
+				icon.show();
+				current.append('<span class="name">' + dayWeek + '</span>')
+				current.append(icon);
+				current.append('<span class="temp max">' + day.temperatureMax + '&deg;C</span>');
+				current.append('<span class="temp min">' + day.temperatureMin + '&deg;C</span>');
+			});
+    	}
 	});
+}
+
+function getCssIconName(icon) {
+	var cssName;
+	switch (icon) {
+		case 'rain': {
+			cssName = 'rainy';
+			break;
+		}
+		case 'snow': {
+			cssName = 'snowy';
+			break;
+		}
+		default: {
+			cssName = icon;
+			break;
+		}
+	}
+	return cssName;
 }

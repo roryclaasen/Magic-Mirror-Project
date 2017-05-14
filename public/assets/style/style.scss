@@ -3,6 +3,8 @@
 # only Main files contain this front matter, not partials.
 ---
 @import '../fonts/fonts';
+@import 'weather';
+
 html, body {
 	background-color: #000;
 	color: #fff;
@@ -135,64 +137,40 @@ html, body {
 			}
 		}
 		&.forecast {
-			top: -1em;
-			left: 1em;
 			#weather {
-				width: 500px;
-				text-align: center;
-				text-transform: uppercase;
-				h2 {
-					margin: 0;
-					margin-bottom: 20px;
-					font-family: Montserrat;
-					font-size: 100px;
-					font-weight: bold;
-					color: #fff;
-					text-align: center;
-					i {
-						font-size: 150px;
-						line-height: 1.0;
+				div {
+					display: block;
+					&.current {
+						display: table;
+						font-size: 5em;
+						height: auto;
+						.temp {
+							font-family: Montserrat;
+							display: table-cell;
+							vertical-align: middle;
+						}
+						.icon { left: -1em; }
 					}
-				}
-				ul {
-					margin: 0;
-					padding: 0;
-					li {
-						display: inline-block;
-						&.currently { margin: 0 20px; }
-					}
-				}
-				.week-forecast {
-					padding-top: 10px;
-					text-align: center;
-					width: 100%;
-					margin: auto;
-					div {
-						display: inline-block;
-						width: 40px;
-						margin: 0 10px;
-						p {
-							position: relative;
-							width: 100%;
-							* {
+					&.week {
+						.look {
+							font-size: 2em;
+							.day {
 								display: block;
-								position: relative;
-								text-align: center;
-							}
-							span {
-								font-weight: 200;
-								&.day {	vertical-align: top; }
-								&.temp {
-									font-family: Montserrat;
-									vertical-align: bottom;
-									font-size: 0.95em;
+								margin-bottom: -0.35em;
+								* { 	display: inline-block; }
+								.name { width: 5.5em; }
+								.icon {
+									vertical-align: middle;
+									font-size: 0.25em;
+								}
+								.temp {
+									margin-left: 0.75em;
+									&.min {
+										font-size: 0.5em;
+									}
 								}
 							}
-							i {
-								vertical-align: middle;
-								top: -0.25em;
-								font-size: 3em;
-							}
+
 						}
 					}
 				}

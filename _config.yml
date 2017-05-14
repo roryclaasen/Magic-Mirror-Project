@@ -18,7 +18,8 @@ sass:
 module:
     weather:
         visible: true
-        location: Rowlands Castle
+        latitude: "50.892206"
+        longitude: "-0.957955"
     clock:
         visible: true
     calender:
