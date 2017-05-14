@@ -2,3 +2,34 @@ $background: #000;
 $foreground: #fff;
 
 $weather-anim-time: 0.5s;
+
+@mixin keyframes($animationName) {
+    @-webkit-keyframes #{$animationName} { @content; }
+    @-moz-keyframes #{$animationName} { @content; }
+    @-o-keyframes #{$animationName} { @content; }
+    @keyframes #{$animationName} { @content; }
+}
+
+@mixin animation($animate...) {
+    $max: length($animate);
+    $animations: '';
+
+    @for $i from 1 through $max {
+        $animations: #{$animations + nth($animate, $i)};
+        @if $i < $max {
+            $animations: #{$animations + ", "};
+        }
+    }
+    -webkit-animation: $animations;
+    -moz-animation:    $animations;
+    -o-animation:      $animations;
+    animation:         $animations;
+}
+
+@mixin transform($transforms) {
+	   -moz-transform: $transforms;
+	     -o-transform: $transforms;
+	    -ms-transform: $transforms;
+	-webkit-transform: $transforms;
+          transform: $transforms;
+}

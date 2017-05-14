@@ -35,11 +35,9 @@
             background: $foreground;
             box-shadow: -2.1875em 0.6875em 0 -0.6875em $foreground, 2.0625em 0.9375em 0 -0.9375em $foreground, 0 0 0 0.375em $foreground, -2.1875em 0.6875em 0 -0.3125em $foreground, 2.0625em 0.9375em 0 -0.5625em $foreground;
             opacity: 0.3;
-            transform: scale(0.5) translate(6em, -3em);
-            animation: cloud 4s linear infinite;
-            &:after {
-                background: $foreground;
-            }
+            @include transform(scale(0.5) translate(6em, -3em));
+            @include animation('cloud 4s linear infinite');
+            &:after { background: $foreground; }
         }
     }
 
@@ -53,7 +51,7 @@
         background: currentColor;
         border-radius: 50%;
         box-shadow: 0 0 0 0.375em $foreground;
-        animation: spin 120s infinite linear;
+        @include animation('spin 120s infinite linear');
 
         .rays {
             position: absolute;
@@ -74,19 +72,17 @@
                 display: block;
                 width: 0.375em;
                 height: 1.125em;
-                transform: rotate(60deg);
+                @include transform(rotate(60deg));
                 transform-origin: 50% 3.25em;
                 background: $foreground;
                 border-radius: 0.25em;
                 box-shadow: 0 5.375em $foreground;
             }
-            &:before { transform: rotate(120deg); }
+            &:before { @include transform(rotate(120deg)); }
         }
     }
 
-    .cloud + .sun {
-        margin: -2em 1em;
-    }
+    .cloud + .sun { margin: -2em 1em; }
 
     .rain, .lightning, .snow {
         position: absolute;
@@ -111,8 +107,8 @@
         background: #0cf;
         border-radius: 100% 0 60% 50% / 60% 0 100% 50%;
         box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
-        transform: rotate(-28deg);
-        animation: rain 3s linear infinite;
+        @include transform(rotate(-28deg));
+        @include animation('animation: rain 3s linear infinite');
     }
 
     .lightning .bolt {
@@ -122,14 +118,14 @@
         margin: -0.25em 0 0 -0.125em;
         color: $foreground;
         opacity: 0.3;
-        animation: lightning 2s linear infinite;
+        @include animation('lightning 2s linear infinite');
         &:nth-child(2) {
             width: 0.5em;
             height: 0.25em;
             margin: -1.75em 0 0 -1.875em;
-            transform: translate(2.5em, 2.25em);
+            @include transform(translate(2.5em, 2.25em));
             opacity: 0.2;
-            animation: lightning 1.5s linear infinite;
+            @include animation('lightning 1.5s linear infinite');
         }
         &:before {
             content: '';
@@ -142,7 +138,7 @@
             border-right: 0.75em solid;
             border-bottom: 0.75em solid;
             border-left: 0.5em solid transparent;
-            transform: skewX(-10deg);
+            @include transform(skewX(-10deg));
         }
         &:after {
             content: '';
@@ -155,13 +151,13 @@
             border-right: 0.75em solid;
             border-bottom: 0.75em solid;
             border-left: 0.5em solid transparent;
-            transform: skewX(-10deg);
+            @include transform(skewX(-10deg));
             margin: -0.25em 0 0 -0.25em;
             border-top: 0.75em solid;
             border-right: 0.5em solid transparent;
             border-bottom: 1.25em solid transparent;
             border-left: 0.75em solid;
-            transform: skewX(-10deg);
+            @include transform(skewX(-10deg));
         }
         &:nth-child(2) {
             &:before {
@@ -191,7 +187,7 @@
             color: $foreground;
             list-height: 1em;
             opacity: 0.2;
-            animation: spin 8s linear infinite reverse;
+            @include animation('spin 8s linear infinite reverse');
         }
         &:after {
             content: '\2744';
@@ -202,24 +198,24 @@
             color: $foreground;
             list-height: 1em;
             opacity: 0.2;
-            animation: spin 8s linear infinite reverse;
+            @include animation('spin 8s linear infinite reverse');
             margin: 0.125em 0 0 -1em;
             font-size: 1.5em;
             opacity: 0.4;
-            animation: spin 14s linear infinite;
+            @include animation('spin 14s linear infinite');
         }
         &:nth-child(2) {
             &:before {
                 margin: -0.5em 0 0 0.25em;
                 font-size: 1.25em;
                 opacity: 0.2;
-                animation: spin 10s linear infinite;
+                @include animation('spin 10s linear infinite');
             }
             &:after {
                 margin: 0.375em 0 0 0.125em;
                 font-size: 2em;
                 opacity: 0.4;
-                animation: spin 16s linear infinite reverse;
+                @include animation('spin 16s linear infinite');
             }
         }
     }
@@ -227,22 +223,22 @@
 
 /* Animations */
 
-@keyframes spin {
-    100% { transform: rotate(360deg); }
+@include keyframes(spin) {
+    100% { @include transform(rotate(360deg)); }
 }
 
 
-@keyframes cloud {
+@include keyframes(cloud) {
     0% { opacity: 0; }
     50% { opacity: 0.3; }
     100% {
         opacity: 0;
-        transform: scale(0.5) translate(-200%, -3em);
+        @include transform(scale(0.5) translate(-200%, -3em));
     }
 }
 
 
-@keyframes rain {
+@include keyframes(rain) {
     0% {
         background: #0cf;
         box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf;
@@ -255,7 +251,7 @@
     100% {box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf; }
 }
 
-@keyframes lightning {
+@include keyframes(lightning) {
     45% {
         color: $foreground;
         background: $foreground;
