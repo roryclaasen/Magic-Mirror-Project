@@ -14,8 +14,8 @@ if gem list jekyll -i; then
     jekyll build --config '_config.yml,_private_config.yml'> /dev/null
     if [ $? -eq 0 ]; then
         echo "Jekyll build passed. Continuing to launch display"
-        DISPLAY=:0 chromium-browser --incognito --kiosk http://localhost:4000 &!
-        jekyll serve --config '_config.yml,_private_config.yml' &!
+        DISPLAY=:0 chromium-browser --incognito --kiosk http://localhost:4000 & disown $!
+        jekyll serve --config '_config.yml,_private_config.yml' & disown $!
     else
         echo "Jekyll build failed!"
         exit 1
