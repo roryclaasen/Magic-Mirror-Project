@@ -2,12 +2,13 @@
 # this ensures Jekyll reads the file to be transformed into CSS later
 # only Main files contain this front matter, not partials.
 ---
+@import '_vars';
 @import '../fonts/fonts';
 @import 'weather';
 
 html, body {
-	background-color: #000;
-	color: #fff;
+	background-color: $background;
+	color: $foreground;
 	margin: 0;
 	padding: 0;
 	width: 100vw;
@@ -37,7 +38,7 @@ html, body {
 				display: block;
 				margin: auto;
 				&.icon-warning {
-					background: white;
+					background: $foreground;
 					-webkit-mask: url(/assets/image/warning.svg) center / contain no-repeat;
 				}
 			}
@@ -62,8 +63,8 @@ html, body {
 				button {
 					font-family: 'Ubuntu';
 					font-weight: bold;
-					background-color: #fff;
-					color: #000;
+					background-color: $foreground;
+					color: $background;
 					border: none;
 					text-decoration: none;
 				}
@@ -99,7 +100,7 @@ html, body {
 					height: 100%;
 					width: 100%;
 					content: "";
-					background: linear-gradient(to top, rgba(0, 0, 0, 1) 15px, rgba(0, 0, 0, 0.75) 30px, rgba(0, 0, 0, 0.5) 40%, rgba(0, 0, 0, 0) 50%);
+					background: linear-gradient(to top, rgba($background, 1) 15px, rgba($background, 0.75) 30px, rgba($background, 0.5) 40%, rgba($background, 0) 50%);
 					// Using 9 results now instead of 10 as the 10th gets hidden
 				}
 			}
@@ -165,12 +166,9 @@ html, body {
 								}
 								.temp {
 									margin-left: 0.75em;
-									&.min {
-										font-size: 0.5em;
-									}
+									&.min { font-size: 0.5em; 	}
 								}
 							}
-
 						}
 					}
 				}
