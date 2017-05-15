@@ -36,6 +36,7 @@ function getWeather() {
 				$('#weather .week .look').append('<div class="day ' + dayWeek + '"></div>');
 				var current = $('#weather .week .look .day.' + dayWeek);
 
+				$('#weather .current .icon').each(function() {$(this).hide();});
 				var icon = $('#weather .current .icon.' + getCssIconName(day.icon)).clone();
 				icon.show();
 				current.append('<span class="name">' + dayWeek + '</span>')

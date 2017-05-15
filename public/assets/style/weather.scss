@@ -40,7 +40,7 @@
             &:after { background: $foreground; }
         }
         &:nth-child(3) {
-            z-index: 10;
+            z-index: 2;
             background: $foreground;
             box-shadow: -2.1875em 0.6875em 0 -0.6875em $foreground, 2.0625em 0.9375em 0 -0.9375em $foreground, 0 0 0 0.375em $foreground, -2.1875em 0.6875em 0 -0.3125em $foreground, 2.0625em 0.9375em 0 -0.5625em $foreground;
             opacity: 0.4;
