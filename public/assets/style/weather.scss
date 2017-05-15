@@ -50,16 +50,9 @@
         }
         + .sun, + .moon { margin: -2em 1em; }
         + .moon {
-            left: calc(50% + 0.75em);
-            width: 2.5em;
-            height: 2.5em;
-            &:after {
-                width: 2.5em;
-                $ratio: 2.5 / 4;
-                height: calc(#{$ratio} * 5.25em);
-                left: calc(#{$ratio} * 1.68em);
-                top: calc(#{$ratio} * -2.2em - 0.2em);
-            }
+            margin: -2.75em 1em;
+            width: 3.5em;
+            height: 3.5em;
         }
     }
 
@@ -74,7 +67,6 @@
         border-radius: 50%;
         box-shadow: 0 0 0 0.375em $foreground;
         @include animation('spin 120s infinite linear');
-
         .rays {
             position: absolute;
             top: -2em;
@@ -107,33 +99,14 @@
     .moon {
         position: absolute;
         top: 50%;
-        left: calc(50% + 0.5em);
-
-        width: 4em;
-        height: 4em;
-
-        margin: -2em;
+        left: 50%;
+        width: 5em;
+        height: 5em;
+        margin: -2.5em;
         background: currentColor;
         border-radius: 50%;
-        box-shadow: 0 0 0 0.375em $foreground;
-        &:after {
-            content: '';
-            position: absolute;
-            left: 1.68em;
-            top: -2.2em;
-            display: block;
-
-            width: 4em;
-            height: 5.25em;
-            border-radius: 50%;
-
-            background: currentColor;
-
-            border: solid 0.375em currentColor;
-            border-left: solid 0.375em $foreground;
-
-            @include transform(rotate(-30deg));
-        }
+        box-shadow: 0 0 0 0.375em $background, inset 1em -0.8em 0 0.2em $foreground, inset 0 0 0 0.15em rgba($foreground, 0.2);
+        @include animation('moon 20s linear infinite');
     }
 
     .rain, .lightning, .snow, .fog {
@@ -336,7 +309,7 @@
         background: rgba(255, 255, 255, 0.3);
         box-shadow: 0.625em 0.875em 0 -0.125em #0cf, -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 rgba(255, 255, 255, 0.2);
     }
-    100% {box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf; }
+    100% { box-shadow: 0.625em 0.875em 0 -0.125em rgba(255, 255, 255, 0.2), -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2), -1.375em -0.125em 0 #0cf; }
 }
 
 @include keyframes(rain2) {
@@ -349,7 +322,7 @@
         background: rgba(255, 255, 255, 0.3);
         box-shadow: -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2);
     }
-    100% {box-shadow: -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2),; }
+    100% { box-shadow: -0.875em 1.125em 0 -0.125em rgba(255, 255, 255, 0.2); }
 }
 
 @include keyframes(lightning) {
@@ -376,4 +349,9 @@
     }
     50% { border-color: rgba($foreground, 0.5); }
     75% { border-color: rgba($foreground, 0.2); border-bottom-color: rgba($foreground, 0.9); }
+}
+
+@include keyframes(moon) {
+    0% { box-shadow: 0 0 0 0.375em $background, inset 1em -0.8em 0 0.2em $foreground, inset 0 0 0 0.15em rgba($foreground, 0.2); }
+    50% { box-shadow: 0 0 0 0.375em $background, inset 1.8em -1.6em 0 0.2em $foreground, inset 0 0 0 0.15em rgba($foreground, 0.45); }
 }
