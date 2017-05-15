@@ -39,6 +39,15 @@
             @include animation('cloud 4s linear infinite');
             &:after { background: $foreground; }
         }
+        &:nth-child(3) {
+            z-index: 10;
+            background: $foreground;
+            box-shadow: -2.1875em 0.6875em 0 -0.6875em $foreground, 2.0625em 0.9375em 0 -0.9375em $foreground, 0 0 0 0.375em $foreground, -2.1875em 0.6875em 0 -0.3125em $foreground, 2.0625em 0.9375em 0 -0.5625em $foreground;
+            opacity: 0.4;
+            @include transform(scale(0.6) translate(7em, 3em));
+            @include animation('cloud2 3s linear infinite');
+            &:after { background: $foreground; }
+        }
         + .sun, + .moon { margin: -2em 1em; }
         + .moon {
             left: calc(50% + 0.75em);
@@ -127,7 +136,7 @@
         }
     }
 
-    .rain, .lightning, .snow {
+    .rain, .lightning, .snow, .fog {
         position: absolute;
         z-index: 2;
         top: 50%;
@@ -263,12 +272,30 @@
                 }
             }
         }
-    }
-    .sleet {
-        .snow + .rain {
+        + .rain {
             background: rgba($background, 0);
             @include transform(translate(0.6em, 0.25em) rotate(-30deg));
             &:after { @include animation('rain2 3s linear infinite'); }
+        }
+    }
+    .fog {
+        position: absolute;
+        top: 5em;
+        height: 1.875em;
+        width: 4em;
+        background: currentColor;
+        border-bottom: 0.375em solid rgba($foreground, 0.9);;
+        @include animation('fog 3s linear infinite');
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0.75em;
+            height: 1.875em;
+            width: 4em;
+            opacity: 0.4;
+            border-top: 0.375em solid rgba($foreground, 0.9);
+            border-bottom: 0.375em solid rgba($foreground, 0.9);
+            @include animation('fog 7s linear infinite');
         }
     }
 }
@@ -286,6 +313,15 @@
     100% {
         opacity: 0;
         @include transform(scale(0.5) translate(-200%, -3em));
+    }
+}
+
+@include keyframes(cloud2) {
+    0% { opacity: 0; }
+    50% { opacity: 0.4; }
+    100% {
+        opacity: 0;
+        @include transform(scale(0.6) translate(-200%, 3em));
     }
 }
 
@@ -332,4 +368,12 @@
         background: $foreground;
         opacity: 0.2;
     }
+}
+
+@include keyframes(fog) {
+    0% {
+        border-color: rgba($foreground, 0.9);
+    }
+    50% { border-color: rgba($foreground, 0.5); }
+    75% { border-color: rgba($foreground, 0.2); border-bottom-color: rgba($foreground, 0.9); }
 }

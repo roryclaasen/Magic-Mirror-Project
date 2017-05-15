@@ -58,6 +58,10 @@ function getCssIconName(icon) {
 			cssName = 'snowy';
 			break;
 		}
+		case 'fog': {
+			cssName = 'foggy';
+			break;
+		}
 		default: {
 			cssName = icon;
 			break;
