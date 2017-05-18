@@ -23,7 +23,7 @@ function getWeather() {
 			var todayDate = new Date(currently.time * 1000);
 			$('#weather .current .icon').each(function() {$(this).hide();});
 			$('#weather .current .icon.' + getCssIconName(currently.icon)).show();
-			$('#weather .current .temp').html(currently.temperature + "&deg;C");
+			$('#weather .current .temp').html(Math.round(currently.temperature) + "&deg;C");
 
 			// $('#weather .week .summary').html(week.summary);
 			$('#weather .week .look').html('');
@@ -39,8 +39,8 @@ function getWeather() {
 				icon.show();
 				current.append('<span class="name">' + dayWeek + '</span>')
 				current.append(icon);
-				current.append('<span class="temp max">' + day.temperatureMax + '&deg;C</span>');
-				current.append('<span class="temp min">' + day.temperatureMin + '&deg;C</span>');
+				current.append('<span class="temp max">' + Math.round(day.temperatureMax) + '&deg;C</span>');
+				current.append('<span class="temp min">' + Math.round(day.temperatureMin) + '&deg;C</span>');
 			});
     	}
 	});
