@@ -18,7 +18,7 @@ function getWeather() {
         },
         success: function(data) {
 			var currently = data.currently;
-			var week = data.daily;
+		var week = data.daily;
 
 			var todayDate = new Date(currently.time * 1000);
 			$('#weather .current .icon').each(function() {$(this).hide();});
